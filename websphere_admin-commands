@@ -1,0 +1,96 @@
+1.Deployment manager server
+2.application server
+3.nodeagent server
+4.adminagent server
+5.jobmanager
+
+
+ System administration
+ 
+ 1.Deployment manager
+ 
+ from Profile Bin directory:
+ 
+ /opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin>./startManager.sh
+ /opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin>./stopManager.sh
+ 
+ /opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin>./startServer.sh dmgr
+ /opt/IBM/WebSphere/AppServer/profiles/Dmgr01/bin>./stopServer.sh dmgr
+ 
+ Websphere root :
+ 
+ /opt/IBM/WebSphere/AppServer/bin>./startManager.sh -profileName Dmgr01
+ /opt/IBM/WebSphere/AppServer/bin>./stopManager.sh -profileName Dmgr01
+ 
+ 
+ 2.Application server
+ 
+ from profile bin directory :
+ /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin>./startServer.sh server1
+ /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin>./stopServer.sh server1
+ 
+ From websphere root:
+ 
+ /opt/IBM/WebSphere/AppServer/bin>./startServer.sh server1 -profileName AppSrv05
+ /opt/IBM/WebSphere/AppServer/bin>./stopServer.sh server1 -profileName AppSrv05
+ 
+ 
+ 3.Node agent
+ 
+ From profile bin directory :
+ 
+ /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin>./startNode.sh
+ /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/bin>./stopNode.sh
+ 
+ From Websphere root :
+ /opt/IBM/WebSphere/AppServer/bin>./startServer.sh nodeagent -profileName AppSrv01
+ /opt/IBM/WebSphere/AppServer/bin>./stopServer.sh nodeagent -profileName AppSrv01
+ 
+ 
+ 4.Admin agent
+ 
+ from profile Bin directoty:
+ /opt/IBM/WebSphere/AppServer/profiles/AdminAgent01/bin>./startServer.sh adminagent
+ /opt/IBM/WebSphere/AppServer/profiles/AdminAgent01/bin>./stopServer.sh adminagent
+ 
+ from Websphere root :
+ /opt/IBM/WebSphere/AppServer/bin>./startServer.sh adminagent -profileName AdminAgent01
+ /opt/IBM/WebSphere/AppServer/bin>./stopServer.sh adminagent -profileName AdminAgent01
+ 
+ 
+ 5.job manager
+ 
+ From profile bin directory :
+ /opt/IBM/WebSphere/AppServer/profiles/JobMgr01/bin>./startServer.sh jobmgr
+ /opt/IBM/WebSphere/AppServer/profiles/JobMgr01/bin>./stopServer.sh jobmgr
+ 
+ From websphere root :
+ /opt/IBM/WebSphere/AppServer/bin>./startServer.sh jobmgr -profileName JobMgr01
+ /opt/IBM/WebSphere/AppServer/bin>./stopServer.sh jobmgr -profileName JobMgr01
+ 
+ 
+ commands
+ ---------------
+ backupConfig.sh & RestoreConfig.sh
+ ---------------------------------------------
+ From profile bin directory :
+ /opt/IBM/WebSphere/AppServer/profiles/JobMgr01/bin>./backupConfig.sh /opt/BackupJobmanager.zip
+ 
+/opt/IBM/WebSphere/AppServer/profiles/JobMgr01/bin>./restoreConfig.sh /opt/BackupJobmanager.zip
+
+ From websphere root:
+ 
+ /opt/IBM/WebSphere/AppServer/bin>./backupConfig.sh -profileName Dmgr01 /opt/Backupdmgr01.zip
+ 
+ /opt/IBM/WebSphere/AppServer/bin>./restoreConfig.sh /opt/Backupdmgr01.zip
+ 
+ 
+ profilemanagent.sh
+ ------------------------
+ /opt/IBM/WebSphere/AppServer/bin>./manageprofiles.sh -create -templatePath /opt/IBM/WebSphere/AppServer/profileTemplates/management/ -profileName Dmgr04 -profilePath /opt/IBM/WebSphere/AppServer/profiles/Dmgr04
+ 
+ /opt/IBM/WebSphere/AppServer/bin>./manageprofiles.sh -delete -profileName JobMgr02
+ 
+ /opt/IBM/WebSphere/AppServer/bin>./manageprofiles.sh -backupProfile -ProfileName -backupFile /opt/backupjobmgr01.zip
+ 
+ /opt/IBM/WebSphere/AppServer/bin>./manageprofiles.sh -restoreProfile -backupFile /opt/backupjobmgr01.zip
